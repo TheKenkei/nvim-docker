@@ -23,13 +23,16 @@ RUN brew install neovim node npm python3 lazygit ripgrep gcc composer
 
 # Копируем конфигурацию Neovim
 COPY ./nvim /root/.config/nvim
-RUN rm -rf /root/.local/share/nvim
+COPY ./lazygit /root/.config/lazygit
+
 
 
 # Запускаем установку плагинов Neovim
 RUN nvim +Lazy +MasonInstallAll +qa
 RUN rm -rf /root/.local/share/nvim/lazy/nvim-treesitter
 RUN git clone  https://github.com/nvim-treesitter/nvim-treesitter.git  /root/.local/share/nvim/lazy/nvim-treesitter
+
+
 RUN nvim -v
 
 RUN nvim -c 'TSInstall! vim lua vimdoc html css scss typescript javascript php' -c 'qa'
