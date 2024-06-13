@@ -1,0 +1,11 @@
+version: "3"
+services:
+  nvim:
+    image: nvim:v66
+    container_name: nvim
+    volumes:
+      - /home/kenkei/.config/nvim:/root/.config/nvim
+      - .:/app
+    working_dir: /app
+    command: nvim
+    # entrypoint: ["nvim"]
