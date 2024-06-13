@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build . -t thekenkei/nvim:latest
+docker build . -t thekenkei/nvim:alpine
